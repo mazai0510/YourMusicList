@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
+use App\Playlist;
+
+class PlaylistController extends Controller
+{
+    public function index()
+    {
+        // DBよりBookテーブルの値を全て取得
+        $lists = Playlist::all();
+  
+        // 取得した値をビュー「book/index」に渡す
+        return $res = response()->json($lists);
+    }
+    
+    public function store(Request $request)
+    {
+        // DBへ登録
+        $lists = new App\Playlist;
+
+        return \App\Playlist::create([
+            'playlistid' => 'xxxxxxxa',
+            'author' => 'mazai',
+        ]);
+    }
+}
