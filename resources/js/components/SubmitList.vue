@@ -4,7 +4,11 @@
   >
     <v-row>
       <v-col cols = 6>
-        <iframe id="ytplayer" type="text/html" width=100% height="250"
+        <iframe 
+        id="ytplayer" 
+        type="text/html" 
+        width=100% 
+        height="250"
         v-bind:src="ListID"
         frameborder="0"></iframe>
       </v-col>
@@ -29,8 +33,7 @@ export default {
   },
   //親コンポーネントからプレイリストID、プレイリスト名、作者名を受け取る
   props:{
-    playlistid: String,
-    //author: String
+    playlistid: String
   },
   //プレイリストのIDを返す
   data(){
