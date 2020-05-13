@@ -19,6 +19,8 @@ Route::get('/', 'RootController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('youtube/channels/{id}/titles', 'Api\YourtubeController@getListByChannelId');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

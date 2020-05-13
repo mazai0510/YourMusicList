@@ -7,21 +7,12 @@
     class="pa-10"
   >
     <v-carousel-item
-      v-for="(slide, i) in slides"
+      v-for="(item, i) in items"
       :key="i"
+      :src="item.src"
+      reverse-transition="fade-transition"
+      transition="fade-transition"
     >
-      <v-sheet
-        :color="colors[i]"
-        height="100%"
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-3">{{ slide }} Slide</div>
-        </v-row>
-      </v-sheet>
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -30,20 +21,20 @@
 export default {
   data () {
     return {
-      colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4'
-      ],
-      slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth'
-      ]
+      items: [
+          {
+            src: 'https://www.youtube.com/watch?v=y1QG6HX-1N8',
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+          },
+          {
+            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+          },
+        ],
     }
   }
 }

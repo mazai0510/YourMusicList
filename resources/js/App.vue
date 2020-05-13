@@ -18,10 +18,6 @@ export default {
     Header,
     Tabs,
     Footer
-  },
-
-  data: () => ({
-    //
-  })
+  }
 }
 </script>

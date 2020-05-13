@@ -35,8 +35,8 @@ export default{
       tab: null,
       items: [
         { name: 'Home', route: '/'},
-        { name: 'Follows', route: '/Follows'},
-        { name: 'Favorite', route: '/list'},
+        { name: 'TimeLine', route: '/Follows'},
+        { name: 'Playlists', route: '/List'},
         { name: 'Profiel', route: '/Profiel'}
       ],
       ytdata: {},
@@ -55,13 +55,6 @@ export default{
       .catch(err => {
         console.log(err)
       })
-    }
-  },
-
-  watch: {
-    items: function () {
-      console.log('結果を表示します') 
-      console.log(this.ytdata)
     }
   },
 

@@ -13,8 +13,7 @@
         frameborder="0"></iframe>
       </v-col>
       <v-col cols = 6>
-        <v-card-title>プレイリスト名 : AAA</v-card-title>
-        <v-card-subtitle class="pb-0">作成者 : {{userData['name']}} </v-card-subtitle>
+        <v-card-title class="pb-0">作成者 : {{userData['name']}} </v-card-title>
         <InputTitle :value="playlistTitle" @change="InputTitle"/>
         <ButtonSubmit :value="submitValue" @input="submitlist"/>
       </v-col>
