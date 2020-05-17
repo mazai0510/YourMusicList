@@ -61,6 +61,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="channelid" class="col-md-4 col-form-label text-md-right">{{ __('Channelid') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="channelid" type="text" class="form-control{{ $errors->has('channelid') ? ' is-invalid' : '' }}" name="channelid" value="{{ old('channelid') }}" required autofocus>
+
+                                @if ($errors->has('channelid'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('channelid') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

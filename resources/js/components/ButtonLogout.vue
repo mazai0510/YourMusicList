@@ -12,6 +12,7 @@ export default {
       axios.get('/api/getlogout')
       .then(response =>{
         console.log('logouted!!')
+        this.$router.go({path: this.$router.currentRoute.path, force: true})
       })
       .catch(err =>{
         console.log(err)

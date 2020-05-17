@@ -1,7 +1,7 @@
 <template>
     <v-text-field
         dense
-        label="Regular"
+        label="Input playlist title."
         v-model="playlistTitle"
     ></v-text-field>
 </template>

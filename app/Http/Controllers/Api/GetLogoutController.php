@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class GetLogoutController extends Controller
 {
+
     public function GetLogout(){
-        return Auth::logout();
+        Auth::logout();
+        return redirect('/');
     }
 }

@@ -5,7 +5,7 @@
       <v-card-title> 作成したプレイリスト </v-card-title>
       <v-card-text class="text--primary"></v-card-text>
       <div v-for="item in playlistid">
-         <SubmitList :playlistid="item" />
+         <SubmitList :playlistid="item" :author="author" />
       </div>
    </v-card>
 </template>
@@ -21,7 +21,8 @@ export default {
    },
 
    props: {
-      playlistid: Object
+      playlistid: Object,
+      author: String
    },
 }
 

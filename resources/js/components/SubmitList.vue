@@ -13,7 +13,7 @@
         frameborder="0"></iframe>
       </v-col>
       <v-col cols = 6>
-        <v-card-title class="pb-0">作成者 : {{userData['name']}} </v-card-title>
+        <v-card-title class="pb-0">作成者 : {{author}} </v-card-title>
         <InputTitle :value="playlistTitle" @change="InputTitle"/>
         <ButtonSubmit :value="submitValue" @input="submitlist"/>
       </v-col>
@@ -32,14 +32,14 @@ export default {
   },
   //親コンポーネントからプレイリストID、プレイリスト名、作者名を受け取る
   props:{
-    playlistid: String
+    playlistid: String,
+    author: String
   },
   //プレイリストのIDを返す
   data(){
     return {
       ListID: 'https://www.youtube.com/embed?listType=playlist&list=' + this.playlistid,
       submitValue: true,
-      userData: {},
       playlistTitle: ""
     }
   },
@@ -48,7 +48,7 @@ export default {
     submitlist: function(event) {
       let data = {
         'playlistid' : this.playlistid,
-        'author' : this.userData['name'],
+        'author' : this.author,
         'playlistTitle': this.playlistTitle
       };
       let axiosPost = axios.create({
@@ -66,23 +66,7 @@ export default {
 
     InputTitle (playlistTitle) {
       this.playlistTitle = playlistTitle
-    },
-
-    getUser(){
-      axios.get('/api/getlogininfo')
-      .then(response =>{
-        this.userData = response.data,
-        console.log(this.userData)
-      })
-      .catch(err => {
-        console.log(err)
-      })
     }
-  },
-
-  created() {
-    this.getUser();
   }
-
 }
 </script>

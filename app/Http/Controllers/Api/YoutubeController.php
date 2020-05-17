@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Google_Client;
 use Google_Service_YouTube;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 class YoutubeController extends Controller

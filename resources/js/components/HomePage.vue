@@ -23,9 +23,6 @@ export default {
     return {
       items: [
           {
-            src: 'https://www.youtube.com/watch?v=y1QG6HX-1N8',
-          },
-          {
             src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
           },
           {
