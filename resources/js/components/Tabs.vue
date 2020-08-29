@@ -49,6 +49,8 @@ export default {
       await axios.get('/api/getlogininfo')
       .then(response =>{
         this.userData = response.data
+        console.log("playlistid...")
+        console.log(this.userData.channelid)
       })
       .catch(err => {
         console.log(err)

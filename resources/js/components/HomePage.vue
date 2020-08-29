@@ -23,13 +23,13 @@ export default {
     return {
       items: [
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            src: '/imgs/home1.jpg',
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+            src: '/imgs/home2.jpg',
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+            src: '/imgs/home3.jpg',
           },
         ],
     }
