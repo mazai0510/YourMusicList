@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomePage from '../components/HomePage'
-import FollowsPage from '../components/FollowsPage'
-import ListPage from '../components/ListPage'
-import ProfielPage from '../components/ProfielPage'
+import HomePage from '../pages/HomePage'
+import FollowsPage from '../pages/FollowsPage'
+import ListPage from '../pages/ListPage'
+import ProfielPage from '../pages/ProfielPage'
 
 Vue.use(VueRouter)
 

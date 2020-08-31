@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import FollowsLists from "./FollowsLists.vue"
+import FollowsLists from "../components/FollowsLists.vue"
 
 export default {
   name: 'FollowsPage',

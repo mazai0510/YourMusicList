@@ -4,14 +4,14 @@
    >
       <v-card-title> 作成したプレイリスト </v-card-title>
       <v-card-text class="text--primary"></v-card-text>
-      <div v-for="item in playlistid">
+      <div v-for="item in playlistid" :key="item">
          <SubmitList :playlistid="item" :author="author" />
       </div>
    </v-card>
 </template>
 
 <script>
-import SubmitList from "./SubmitList.vue"
+import SubmitList from "../components/SubmitList.vue"
 
 export default {
    name: "list",
