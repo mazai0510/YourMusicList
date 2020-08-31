@@ -2002,11 +2002,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       items: [{
-        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+        src: '/imgs/home1.jpg'
       }, {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+        src: '/imgs/home2.jpg'
       }, {
-        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+        src: '/imgs/home3.jpg'
       }]
     };
   }
@@ -2295,6 +2295,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 2;
                 return axios.get('/api/getlogininfo').then(function (response) {
                   _this.userData = response.data;
+                  console.log("playlistid...");
+                  console.log(_this.userData.channelid);
                 })["catch"](function (err) {
                   console.log(err);
                 });
