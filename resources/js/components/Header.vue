@@ -33,8 +33,7 @@
       IsLogin(){
         axios.get('/api/islogin')
         .then(response =>{
-          this.checkUser = Boolean(response.data),
-          console.log(this.checkUser)
+          this.checkUser = Boolean(response.data)
         })
         .catch(err => {
           console.log(err)

@@ -1758,9 +1758,10 @@ __webpack_require__.r(__webpack_exports__);
         console.log('logouted!!');
 
         _this.$router.go({
-          path: _this.$router.currentRoute.path,
+          path: '/',
           force: true
-        });
+        }); //this.$router.go({path: this.$router.currentRoute.path, force: true})
+
       })["catch"](function (err) {
         console.log(err);
       });
@@ -1909,7 +1910,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/islogin').then(function (response) {
-        _this.checkUser = Boolean(response.data), console.log(_this.checkUser);
+        _this.checkUser = Boolean(response.data);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -2048,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Header_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header.vue */ "./resources/js/components/Header.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2084,6 +2086,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2102,12 +2105,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         route: '/Profiel'
       }],
       ytdata: {},
-      id: {}
+      id: {},
+      userData: {}
     };
   },
   methods: {
-    getLists: function () {
-      var _getLists = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    getUser: function () {
+      var _getUser = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var _this = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2116,7 +2120,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.get('/api/getlogininfo').then(function (response) {
-                  _this.userData = response.data;
+                  _this.userData = response === null || response === void 0 ? void 0 : response.data;
                   console.log("playlistid...");
                   console.log(_this.userData.channelid);
                 })["catch"](function (err) {
@@ -2124,20 +2128,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function getUser() {
+        return _getUser.apply(this, arguments);
+      }
+
+      return getUser;
+    }(),
+    getLists: function () {
+      var _getLists = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this2 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
                 axios.get('/api/list?ID=' + this.userData.channelid).then(function (response) {
-                  _this.ytdata = response.data['items'], _this.id = _this.ytdata.map(function (item) {
+                  var _this2$ytdata;
+
+                  _this2.ytdata = response.data['items'], _this2.id = (_this2$ytdata = _this2.ytdata) === null || _this2$ytdata === void 0 ? void 0 : _this2$ytdata.map(function (item) {
                     return item.id.playlistId;
                   }).filter(Boolean);
                 })["catch"](function (err) {
                   console.log(err);
                 });
 
-              case 3:
+              case 1:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function getLists() {
@@ -2148,7 +2175,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }()
   },
   created: function created() {
-    this.getLists();
+    var checkUser = false;
+    this.getUser();
+    _Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"].methods.IsLogin();
+
+    if (checkUser) {
+      this.getLists();
+    }
   }
 });
 
