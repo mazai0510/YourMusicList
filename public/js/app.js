@@ -2110,8 +2110,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    getUser: function () {
-      var _getUser = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    getLists: function () {
+      var _getLists = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var _this = this;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2128,43 +2128,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 2:
+                if (!!this.userData.channelid) {
+                  axios.get('/api/list?ID=' + this.userData.channelid).then(function (response) {
+                    var _this$ytdata;
+
+                    _this.ytdata = response.data['items'], _this.id = (_this$ytdata = _this.ytdata) === null || _this$ytdata === void 0 ? void 0 : _this$ytdata.map(function (item) {
+                      return item.id.playlistId;
+                    }).filter(Boolean);
+                  })["catch"](function (err) {
+                    console.log(err);
+                  });
+                }
+
+              case 3:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
-      }));
-
-      function getUser() {
-        return _getUser.apply(this, arguments);
-      }
-
-      return getUser;
-    }(),
-    getLists: function () {
-      var _getLists = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this2 = this;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                axios.get('/api/list?ID=' + this.userData.channelid).then(function (response) {
-                  var _this2$ytdata;
-
-                  _this2.ytdata = response.data['items'], _this2.id = (_this2$ytdata = _this2.ytdata) === null || _this2$ytdata === void 0 ? void 0 : _this2$ytdata.map(function (item) {
-                    return item.id.playlistId;
-                  }).filter(Boolean);
-                })["catch"](function (err) {
-                  console.log(err);
-                });
-
-              case 1:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
+        }, _callee, this);
       }));
 
       function getLists() {
@@ -2175,13 +2156,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }()
   },
   created: function created() {
-    var checkUser = false;
-    this.getUser();
-    _Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"].methods.IsLogin();
-
-    if (checkUser) {
-      this.getLists();
-    }
+    this.getLists();
   }
 });
 

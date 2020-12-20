@@ -20,7 +20,7 @@ class YoutubeController extends Controller
         // Googleへの接続情報のインスタンスを作成(と設定
         $channelId = $request->input('ID');
         $client = new Google_Client();
-        $client->setDeveloperKey(env('GOOGLE_API_KEY'));
+        $client->setDeveloperKey(config('app.apikey'));
 
         // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
         $youtube = new Google_Service_YouTube($client);

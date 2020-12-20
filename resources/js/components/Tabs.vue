@@ -47,7 +47,7 @@ export default {
   },
 
   methods: {
-    getUser: async function () {
+    getLists: async function () {
       await axios.get('/api/getlogininfo')
       .then(response =>{
         this.userData = response?.data
@@ -57,27 +57,21 @@ export default {
       .catch(err => {
         console.log(err)
       })
-    },
-
-    getLists: async function () {
-      axios.get('/api/list?ID=' + this.userData.channelid)
-      .then(response => {
-        this.ytdata = response.data['items'],
-        this.id = this.ytdata?.map(item => item.id.playlistId).filter(Boolean)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      if(!!this.userData.channelid){
+        axios.get('/api/list?ID=' + this.userData.channelid)
+        .then(response => {
+          this.ytdata = response.data['items'],
+          this.id = this.ytdata?.map(item => item.id.playlistId).filter(Boolean)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }
     }
   },
 
   created() {
-    let checkUser = false;
-    this.getUser();
-    Header.methods.IsLogin();
-    if(checkUser){
     this.getLists();
-    }
   }
 
 }
