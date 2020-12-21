@@ -20,3 +20,9 @@ Route::get('/', 'RootController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::redirect('/List', '/', 301);
+
+Route::redirect('/Profiel', '/', 301);
+
+Route::redirect('/Follows', '/', 301);
