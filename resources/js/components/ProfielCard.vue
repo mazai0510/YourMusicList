@@ -6,11 +6,8 @@
             <v-img src='/imgs/icon.jpg'></v-img>
         </v-avatar>
         <v-card-title>  
-            <EditProfiel :author="author" />
+            <EditProfiel @EditAuthor="EditAuthor" :name="name" :intro="intro" />
         </v-card-title>
-        <v-card-text>
-            hello
-        </v-card-text>
     </v-card>
 </template>
 
@@ -26,7 +23,15 @@ export default {
     },
 
     props:{
-        author: String
+        name: String,
+        intro: String
+    },
+
+    methods: {
+        EditAuthor(...event){
+            let [editedAuthor, editedIntro] = event
+            this.$emit('EditAuthor', editedAuthor, editedIntro)
+        }
     }
 }
 </script>

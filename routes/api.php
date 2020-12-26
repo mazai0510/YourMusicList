@@ -24,6 +24,8 @@ Route::get('/list', 'Api\YoutubeController@getListByChannelId');
 
 Route::resource('/playlist', 'Api\PlaylistController',['only'=>['index','store']]);
 
+Route::resource('/EditProfiels', 'Api\EditProfielsController',['only'=>['index','update']]);
+
 Route::get('/getlogininfo', 'Api\LoginInfoController@GetLoginInfo');
 
 Route::get('/islogin', 'Api\IsLoginController@IsLogin');

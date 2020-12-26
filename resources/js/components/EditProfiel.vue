@@ -1,6 +1,13 @@
 <template>
     <div>
-        {{author}}
+        <div class="pa-4 pt-4">
+            ユーザーネーム
+            {{name}}
+        </div>
+        <div class="pa-4 pt-4">
+            自己紹介
+            {{intro}}
+        </div>
         <v-row
             align="center"
             justify="end"
@@ -22,17 +29,23 @@
                         class="pa-4 pt-6"
                     >
                         <v-text-field
-                            v-model="author"
+                            v-model="editedAuthor"
                             label="Name"
                             filled
                             color="primary"
                         >
                         </v-text-field>
+                        <v-text-field
+                            v-model="editedIntro"
+                            label="Introduction"
+                            color="primary"
+                        >
+                        </v-text-field>
                         <v-btn
                             color="success"
-                            @click="overlay = false"
+                            @click="EditAuthor"
                         >
-                            Hide Overlay
+                            編集完了
                         </v-btn>
                     </v-card>
                 </v-form>
@@ -46,10 +59,29 @@
 export default {
     data: () => ({
       overlay: false,
+      editedAuthor: String,
+      editedIntro: String
     }),
 
     props:{
-        author: String
+        name: String,
+        intro: String
+    },
+
+    methods:{
+        init: function() {
+            this.editedAuthor = this.name,
+            this.editedIntro  = this.intro
+        },
+
+        EditAuthor:function() {
+            this.overlay = false,
+            this.$emit('EditAuthor', this.editedAuthor, this.editedIntro)
+        }
+    },
+
+    created() {
+        this.init()
     }
 }
 

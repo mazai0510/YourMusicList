@@ -23,7 +23,7 @@
         :value="item.route"
       >
       </v-tab-item>
-      <router-view :playlistid="id" :author="userData['name']"></router-view>
+      <router-view :playlistid="id" :author="userData['name']" :introduction="userData['introduction']"></router-view>
     </v-tabs-items>
   </v-content>
 </template>
@@ -52,7 +52,7 @@ export default {
       .then(response =>{
         this.userData = response?.data
         console.log("playlistid...")
-        console.log(this.userData.channelid)
+        console.log(this.userData)
       })
       .catch(err => {
         console.log(err)

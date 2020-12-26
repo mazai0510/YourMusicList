@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use App\Playlist;
+use App\User;
 
-class PlaylistController extends Controller
+class EditProfielsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class PlaylistController extends Controller
     public function index()
     {
         // DBよりテーブルの値を全て取得
-        $lists = Playlist::all();
-  
+        $users = User::all();
+
         // 取得した値を返す
-        return $res = response()->json($lists);
+        return $res = response()->json($users);
     }
 
     /**
@@ -41,18 +41,7 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-        //変数を展開
-        $playlistid = $request->input('playlistid');
-        $author = $request->input('author');
-
-        // DBへ登録
-        $lists = new Playlist;
-        $lists->playlistid = $request->input('playlistid');
-        $lists->author = $request->input('author');
-        $lists->title = $request->input('playlistTitle');
-        $lists->save();
-
-        return 0;   
+        //
     }
 
     /**
@@ -84,9 +73,19 @@ class PlaylistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $users = new User;
+        //変数を展開
+        $name = $request->input('rename');
+        $introduction = $request->input('introduction');
+        $beforename = $request->input('beforename');
+
+        // DBを更新
+        $users->where('name', $beforename)->update(['name' => $name]);
+        $users->where('name', $name)->update(['introduction' => $introduction]);
+
+        return 0; 
     }
 
     /**

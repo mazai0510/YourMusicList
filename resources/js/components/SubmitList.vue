@@ -59,7 +59,7 @@ export default {
         .then(response => {
           console.log('ok')
         })
-        .catch()(err => {
+        .catch(err => {
           console.log(err)
         })  
     },

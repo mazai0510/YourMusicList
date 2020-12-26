@@ -1,48 +1,55 @@
 <template>
-  <v-card
-    class="ma-5"
-  >
-   <v-card-title> A </v-card-title>
-    <v-card-subtitle class="pb-0">作成したプレイリスト</v-card-subtitle>
-    <v-card-text class="text--primary">
-    </v-card-text>
-  </v-card>
+  <ProfielCard @EditAuthor="EditAuthor" :name="name" :intro="intro" />
 </template>
 
 <script>
 
+import ProfielCard from "../components/ProfielCard.vue"
+
 export default {
   name: "Profiel",
-  
-  data: function() {
-    return{
-      items: {}
+
+  data(){
+    return {
+      name: this.author,
+      intro: this.introduction
     }
   },
 
+  components: {
+    'ProfielCard': ProfielCard
+  },
+
+  props: {
+    author: String,
+    introduction: String
+  },
+
   methods: {
-    postList(){
+    EditAuthor(...event) {
+      let [editedAuthor, editedIntro] = event;
+      this.name = editedAuthor;
+      this.intro = editedIntro;
       let data = {
-        'playlistid' : 'xxxxxxx123',
-        'author' : 'mazai'
+        'rename': editedAuthor,
+        'introduction': editedIntro,
+        'beforename': this.author
       };
-      let axiosPost = axios.create({
-        xsrfCookieName: "XSRF-TOKEN",
-        withCredentials: true
-      });
-      axiosPost.post('/api/playlist',data)
+      if(editedAuthor !== this.author){
+        let axiosPut = axios.create({
+          xsrfCookieName: "XSRF-TOKEN",
+          withCredentials: true
+        });
+        axiosPut.put('/api/EditProfiels/{EditProfiel}',data)
         .then(response => {
-          console.log('ok');
+          console.log(response)
         })
-        .catch()(err => {
-          console.log(err);
+        .catch(err => {
+          console.log(err)
         })
       }
-   },
-
-   created() {
-      //this.postList();
-   }
+    },
+  }
 }
 
 </script>
