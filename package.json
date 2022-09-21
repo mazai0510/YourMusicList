@@ -29,6 +29,6 @@
         "css-loader": "^3.5.2",
         "material-design-icons-iconfont": "^5.0.1",
         "vue-youtube": "^1.4.0",
-        "vuetify": "^2.2.21"
+        "vuetify": "^2.6.10"
     }
 }
